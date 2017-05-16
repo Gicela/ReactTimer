@@ -11,6 +11,14 @@ describe('Clock', () =>  {
         expect(Clock).toExist();
     });
 
+    describe('render', () => {
+        it('should render clock to output', () => {
+        var clock = TestUtils.renderIntoDocument(<Clock totalSeconds={62}/>);
+        var $el = $(ReactDOM.findDOMNode(clock));
+        var actualTest = $el.find('.clock-test').text();
+        expect(actualTest).toBe('01:02');
+        });
+    });
 
     describe('FormatSeconds', () => {
         it('should format seconds', () => {
